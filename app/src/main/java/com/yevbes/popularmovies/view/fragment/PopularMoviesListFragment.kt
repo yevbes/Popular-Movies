@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.yevbes.popularmovies.App
 import com.yevbes.popularmovies.R
+import com.yevbes.popularmovies.model.Movie
 import com.yevbes.popularmovies.view.activity.MOVIE_GSON
 import com.yevbes.popularmovies.view.activity.MovieDetailsActivity
 import com.yevbes.popularmovies.view.adapter.PopularMoviesAdapter
@@ -50,12 +51,13 @@ class PopularMoviesListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupRecyclerView()
+        val observer = Observer<List<Movie>> { movies -> mAdapter.addAllMovies(movies) }
         popularMoviesViewModel = ViewModelProviders.of(this).get(PopularMoviesViewModel::class.java)
 
-        popularMoviesViewModel.getPagedListLiveData().observe(this,
-            Observer { movies ->
-                mAdapter.addAllMovies(movies)
-            })
+        popularMoviesViewModel.getMoviesListLiveData().observe(
+            this,
+            observer
+        )
     }
 
     private fun setupRecyclerView() {

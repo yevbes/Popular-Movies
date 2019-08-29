@@ -38,4 +38,9 @@ class PopularMoviesAdapter(
         return movieList.size
     }
 
+    fun clear() {
+        this.movieList.clear()
+        notifyDataSetChanged()
+    }
+
 }

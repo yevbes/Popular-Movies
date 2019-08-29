@@ -14,9 +14,11 @@ class PopularMoviesViewModel : ViewModel(){
         moviesLiveData = repository.getMoviesLiveData()
     }
 
-    fun getPagedListLiveData(): LiveData<List<Movie>> {
+    fun getMoviesListLiveData(): LiveData<List<Movie>> {
         return moviesLiveData
     }
+
+
 
     override fun onCleared() {
         super.onCleared()

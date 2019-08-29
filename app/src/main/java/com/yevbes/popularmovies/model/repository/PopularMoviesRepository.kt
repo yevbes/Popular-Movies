@@ -20,7 +20,7 @@ object PopularMoviesRepository {
     private val compositeDisposable = CompositeDisposable()
 
     init {
-        webService.getTopRatedMovies(API_KEY)
+        val ok = webService.getTopRatedMovies(API_KEY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<Results>{
@@ -47,6 +47,7 @@ object PopularMoviesRepository {
     fun getMoviesLiveData(): LiveData<List<Movie>> {
         return moviesLiveData
     }
+
 
 
 }
