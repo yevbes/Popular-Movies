@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.yevbes.popularmovies.model.Movie" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_list_item_margin"
+        android:layout_marginTop="@dimen/default_list_item_margin"
+        android:layout_marginEnd="@dimen/default_list_item_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/default_list_item_margin"
+            android:layout_marginBottom="@dimen/default_list_item_margin">
+
+            <ImageView
+                android:id="@+id/img_view_poster"
+                imageUrl="@{movie.poster_path}"
+                android:layout_width="@dimen/poster_width"
+                android:layout_height="@dimen/poster_height"
+                android:contentDescription="@{movie.title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/poster" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_list_item_margin"
+                android:layout_marginLeft="@dimen/default_list_item_margin"
+                android:layout_marginEnd="@dimen/default_list_item_margin"
+                android:layout_marginRight="@dimen/default_list_item_margin"
+                android:text="@{movie.title}"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_view_poster"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Toy Story 4" />
+
+            <TextView
+                android:id="@+id/tv_overview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/default_list_item_margin"
+                android:layout_marginLeft="@dimen/default_list_item_margin"
+                android:layout_marginTop="@dimen/default_list_item_margin"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="8"
+                android:text="@{movie.overview}"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_view_poster"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:text="When a new toy called Forky joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy. " />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>
